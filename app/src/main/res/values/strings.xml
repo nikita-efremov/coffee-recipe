@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">Hello World App</string>
-    <string name="hello_world">Hello, World!</string>
-    <string name="welcome_message">Welcome to your first Android app!</string>
+    <string name="app_name">Coffee Recipe</string>
+    <string name="recipe_title">Lance Hendrick Modified Pour Over</string>
+    <string name="equipment_title">Equipment &amp; Ingredients:</string>
+    <string name="equipment_list">• Ceramic V60\n• Cafec Abaca filter\n• 100 degrees water\n• 30g coffee\n• 480ml water\n• 23 clicks Comandante</string>
+    <string name="steps_title">Instructions:</string>
+    <string name="recipe_steps">1. Put Ceramic V60 on kettle during boiling (without filter)\n\n2. After water is boiled, put Ceramic V60 on carafe, insert filter and additionally preheat with 300ml water\n\n3. Put 30g grinder coffee, make a hole in coffee bed\n\n4. Pour 90ml water, stir thoroughly\n\n5. Wait until all coffee is dripped\n\n6. Pour relatively fast till 300ml, then relatively slow till 480ml\n\n7. Do a gentle swirl</string>
 </resources>
