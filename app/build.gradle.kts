@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.helloworldapp"
+    namespace = "com.example.coffeerecipeapp"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.helloworldapp"
+        applicationId = "com.example.coffeerecipeapp"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -41,7 +41,7 @@ dependencies {
     implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.activity:activity-ktx:1.8.2")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")

@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.HelloWorldApp" parent="Theme.Material3.DayNight">
+    <style name="Base.Theme.CoffeeRecipeApp" parent="Theme.Material3.DayNight">
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/primary_color</item>
         <item name="colorPrimaryVariant">@color/primary_variant</item>
@@ -13,5 +13,5 @@
         <item name="colorOnSurface">@color/primary_text_color</item>
     </style>
 
-    <style name="Theme.HelloWorldApp" parent="Base.Theme.HelloWorldApp" />
+    <style name="Theme.CoffeeRecipeApp" parent="Base.Theme.CoffeeRecipeApp" />
 </resources>
