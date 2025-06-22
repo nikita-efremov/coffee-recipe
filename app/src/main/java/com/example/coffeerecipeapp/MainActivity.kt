@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var recipeSteps: TextView
 
     // Coffee amount options (in grams)
-    private val coffeeAmounts = arrayOf(15, 20, 25, 30, 35, 40, 45, 50)
+    private val coffeeAmounts = (12..45).toList().toIntArray()
     private val defaultCoffeeAmount = 30
 
     override fun onCreate(savedInstanceState: Bundle?) {
