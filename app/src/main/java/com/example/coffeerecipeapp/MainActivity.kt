@@ -32,12 +32,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupCoffeeAmountSpinner() {
-        // Create spinner adapter
-        val adapter = ArrayAdapter(
+        // Create spinner adapter with simple custom approach
+        val adapter = object : ArrayAdapter<String>(
             this,
             android.R.layout.simple_spinner_item,
             coffeeAmounts.map { "${it}g" }
-        )
+        ) {
+            override fun getDropDownView(position: Int, convertView: android.view.View?, parent: android.view.ViewGroup): android.view.View {
+                val view = super.getDropDownView(position, convertView, parent)
+                (view as TextView).setTextColor(getColor(R.color.primary_text_color))
+                return view
+            }
+        }
+
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         coffeeAmountSpinner.adapter = adapter
 
@@ -48,6 +55,8 @@ class MainActivity : AppCompatActivity() {
         // Set listener for changes
         coffeeAmountSpinner.onItemSelectedListener = object : android.widget.AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: android.widget.AdapterView<*>?, view: android.view.View?, position: Int, id: Long) {
+                // Set text color for selected item
+                (view as? TextView)?.setTextColor(getColor(R.color.primary_text_color))
                 updateRecipeValues(coffeeAmounts[position])
             }
 
