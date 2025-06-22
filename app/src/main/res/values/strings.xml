@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Coffee Recipe</string>
     <string name="recipe_title">Lance Hendrick Modified Pour Over</string>
+    <string name="coffee_amount_label">Coffee Amount:</string>
     <string name="equipment_title">Equipment &amp; Ingredients:</string>
     <string name="equipment_list">• Ceramic V60\n• Cafec Abaca filter\n• 100 degrees water\n• 30g coffee\n• 480ml water\n• 23 clicks Comandante</string>
     <string name="steps_title">Instructions:</string>
