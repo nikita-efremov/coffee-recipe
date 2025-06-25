@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var coffeeAmountSpinner: Spinner
+    private lateinit var grinderSpinner: Spinner
     private lateinit var equipmentList: TextView
     private lateinit var recipeSteps: TextView
 
@@ -15,17 +16,27 @@ class MainActivity : AppCompatActivity() {
     private val coffeeAmounts = (12..45).toList().toIntArray()
     private val defaultCoffeeAmount = 30
 
+    // Grinder options
+    private val grinders = arrayOf("Comandante C40", "Timemore C2")
+    private val grinderSettings = mapOf(
+        "Comandante C40" to 23,
+        "Timemore C2" to 21
+    )
+    private var selectedGrinder = grinders[0] // Default to Comandante C40
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         // Initialize views
         coffeeAmountSpinner = findViewById(R.id.coffee_amount_spinner)
+        grinderSpinner = findViewById(R.id.grinder_spinner)
         equipmentList = findViewById(R.id.equipment_list)
         recipeSteps = findViewById(R.id.recipe_steps)
 
-        // Setup spinner
+        // Setup spinners
         setupCoffeeAmountSpinner()
+        setupGrinderSpinner()
 
         // Set initial values
         updateRecipeValues(defaultCoffeeAmount)
@@ -66,6 +77,44 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun setupGrinderSpinner() {
+        // Create grinder spinner adapter
+        val adapter = object : ArrayAdapter<String>(
+            this,
+            android.R.layout.simple_spinner_item,
+            grinders
+        ) {
+            override fun getDropDownView(position: Int, convertView: android.view.View?, parent: android.view.ViewGroup): android.view.View {
+                val view = super.getDropDownView(position, convertView, parent)
+                (view as TextView).setTextColor(getColor(R.color.primary_text_color))
+                return view
+            }
+        }
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        grinderSpinner.adapter = adapter
+
+        // Set default selection (Comandante C40)
+        grinderSpinner.setSelection(0)
+
+        // Set listener for changes
+        grinderSpinner.onItemSelectedListener = object : android.widget.AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: android.widget.AdapterView<*>?, view: android.view.View?, position: Int, id: Long) {
+                // Set text color for selected item
+                (view as? TextView)?.setTextColor(getColor(R.color.primary_text_color))
+                selectedGrinder = grinders[position]
+
+                // Update recipe with current coffee amount when grinder changes
+                val currentCoffeeAmount = coffeeAmounts[coffeeAmountSpinner.selectedItemPosition]
+                updateRecipeValues(currentCoffeeAmount)
+            }
+
+            override fun onNothingSelected(parent: android.widget.AdapterView<*>?) {
+                // Do nothing
+            }
+        }
+    }
+
     private fun updateRecipeValues(coffeeGrams: Int) {
         // Calculate dependent values
         val waterVolume = coffeeGrams * 16  // Total water
@@ -73,13 +122,16 @@ class MainActivity : AppCompatActivity() {
         val secondPourTarget = coffeeGrams * 10  // Step 6: pour to this amount
         val finalPourTarget = waterVolume   // Step 6: final amount (same as total water)
 
+        // Get grind setting for selected grinder
+        val grindSetting = grinderSettings[selectedGrinder] ?: 23
+
         // Update equipment list
         val equipmentText = """• Ceramic V60
 - Cafec Abaca filter
 - 100 degrees water
 - ${coffeeGrams}g coffee
 - ${waterVolume}ml water
-- 23 clicks Comandante"""
+- ${grindSetting} clicks on ${selectedGrinder}"""
 
         equipmentList.text = equipmentText
 
