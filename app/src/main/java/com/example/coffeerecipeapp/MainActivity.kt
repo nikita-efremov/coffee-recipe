@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var recipeSteps: TextView
 
     // Recipe names
-    private val recipes = arrayOf("Pour Over Recipe", "Aeropress V2 (Tim Wendelboe)")
+    private val recipes = arrayOf("Pour Over: Lance Hedrick (mod)", "Aeropress: Tim Wendelboe (orig)")
     private var selectedRecipe = recipes[0]
 
     // Pour Over Recipe Data
@@ -105,11 +105,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupSpinnersForCurrentRecipe() {
         when (selectedRecipe) {
-            "Pour Over Recipe" -> {
+            "Pour Over: Lance Hedrick (mod)" -> {
                 setupPourOverSpinners()
                 pourOverSpinner.visibility = android.view.View.VISIBLE
             }
-            "Aeropress V2 (Tim Wendelboe)" -> {
+            "Aeropress: Tim Wendelboe (orig)" -> {
                 setupAeropressSpinners()
                 pourOverSpinner.visibility = android.view.View.GONE
             }
@@ -254,8 +254,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateRecipeDisplay() {
         when (selectedRecipe) {
-            "Pour Over Recipe" -> displayPourOverRecipe()
-            "Aeropress V2 (Tim Wendelboe)" -> displayAeropressRecipe()
+            "Pour Over: Lance Hedrick (mod)" -> displayPourOverRecipe()
+            "Aeropress: Tim Wendelboe (orig)" -> displayAeropressRecipe()
         }
     }
 
@@ -354,7 +354,7 @@ class MainActivity : AppCompatActivity() {
             else -> "12-15"
         }
 
-        val stepsText = """Aeropress V2 (Tim Wendelboe)
+        val stepsText = """Aeropress: Tim Wendelboe (orig)
 ${coffeeGrams}g coffee - ${waterVolume}g water
 Tuning by grind size
 ${grinderRange} clicks ${selectedAeropressGrinder}
