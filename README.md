@@ -1,0 +1,1 @@
+Build and create apk file: ./gradlew assembleDebug
