@@ -338,8 +338,9 @@ class MainActivity : AppCompatActivity() {
         val grindSetting = aeropressGrinderSettings[selectedAeropressGrinder] ?: 13
 
         // Update equipment list
-        val equipmentText = """• Aeropress V2
+        val equipmentText = """
 - Aeropress filter
+- Aeropress in upright position
 - 96°C water
 - ${coffeeGrams}g coffee
 - ${waterVolume}ml water
@@ -347,19 +348,7 @@ class MainActivity : AppCompatActivity() {
 
         equipmentList.text = equipmentText
 
-        // Update recipe steps for Aeropress V2 (Tim Wendelboe)
-        val grinderRange = when (selectedAeropressGrinder) {
-            "Comandante C40" -> "12-15"
-            "Timemore C2" -> "12"
-            else -> "12-15"
-        }
-
-        val stepsText = """Aeropress: Tim Wendelboe (orig)
-${coffeeGrams}g coffee - ${waterVolume}g water
-Tuning by grind size
-${grinderRange} clicks ${selectedAeropressGrinder}
-96 degrees water
-
+        val stepsText = """
 0:00 - Add ${waterVolume}ml water, 3 stirs along the diameter (back to front), insert plunger to stop water
 
 1:00 - Remove plunger, 3 stirs along the diameter (back to front), insert plunger, push
