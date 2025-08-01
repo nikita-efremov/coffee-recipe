@@ -8,4 +8,5 @@
     <string name="recipe_steps">1. Put Ceramic V60 on kettle during boiling (without filter)\n\n2. After water is boiled, put Ceramic V60 on carafe, insert filter and additionally preheat with 300ml water\n\n3. Put 30g grinder coffee, make a hole in coffee bed\n\n4. Pour 90ml water, stir thoroughly\n\n5. Wait until all coffee is dripped\n\n6. Pour relatively fast till 300ml, then relatively slow till 480ml\n\n7. Do a gentle swirl</string>
     <string name="grinder_label">Grinder:</string>
     <string name="pour_over_label">Pour Over type:</string>
+    <string name="recipe_selection_label">Recipe:</string>
 </resources>
