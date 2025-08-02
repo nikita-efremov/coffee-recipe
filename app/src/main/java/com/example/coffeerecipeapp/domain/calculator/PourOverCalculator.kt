@@ -29,6 +29,7 @@ class PourOverCalculator(
         return when (configuration.recipe.id) {
             "pour_over_hoffmann" -> calculateHoffmannRecipe(coffeeGrams, grinder, grindSetting)
             "pour_over_tetsu_kasya" -> calculateTetsuKasyaRecipe(coffeeGrams, grinder, grindSetting)
+            "pour_over_kalita_george_howell" -> calculateKalitaGeorgeHowellRecipe(coffeeGrams, grinder, grindSetting)
             else -> calculateLanceHedrickRecipe(coffeeGrams, dripper, dripperName, grinder, grindSetting)
         }
     }
@@ -76,6 +77,30 @@ class PourOverCalculator(
             RecipeStep(3, "Add 100ml of water (up to 300ml)", "1:30", waterAmount = 100),
             RecipeStep(4, "Add 100ml of water (up to 400ml)", "2:15", waterAmount = 100),
             RecipeStep(5, "Add 100ml of water (up to 500ml)", "3:00", waterAmount = 100)
+        )
+
+        return RecipeResult(equipment, steps)
+    }
+
+    private fun calculateKalitaGeorgeHowellRecipe(coffeeGrams: Int, grinder: Grinder, grindSetting: Int): RecipeResult {
+        val waterVolume = 510 // Fixed 510ml as per specification
+
+        val equipment = listOf(
+            "• Kalita Tsubame",
+            "- Kalita Filter",
+            "- 95°C water",
+            "- ${coffeeGrams}g coffee",
+            "- ${waterVolume}ml water",
+            "- $grindSetting clicks ${grinder.name}"
+        )
+
+        val steps = listOf(
+            RecipeStep(1, "Add 85ml of water during 15sec (up to 85ml)", "0:30", waterAmount = 85),
+            RecipeStep(2, "Add 85ml of water during 15sec (up to 170ml)", "1:00", waterAmount = 85),
+            RecipeStep(3, "Add 85ml of water during 15sec (up to 255ml)", "1:30", waterAmount = 85),
+            RecipeStep(4, "Add 85ml of water during 15sec (up to 340ml)", "2:00", waterAmount = 85),
+            RecipeStep(5, "Add 85ml of water during 15sec (up to 425ml)", "2:30", waterAmount = 85),
+            RecipeStep(6, "Add 85ml of water during 15sec (up to 510ml)", "3:00", waterAmount = 85)
         )
 
         return RecipeResult(equipment, steps)

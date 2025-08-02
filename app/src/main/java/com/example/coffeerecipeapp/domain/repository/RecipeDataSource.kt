@@ -16,7 +16,9 @@ class RecipeDataSource : RecipeRepository {
                 "aeropress_tim_wendelboe" to 13,
                 "pour_over_hoffmann" to 25,
                 "cold_brew_default" to 35,
-                "pour_over_tetsu_kasya" to 28
+                "pour_over_tetsu_kasya" to 28,
+                "pour_over_kalita_george_howell" to 28,
+                "aeropress_my_reverted" to 26
             )
         ),
         "Timemore C2" to Grinder(
@@ -26,7 +28,9 @@ class RecipeDataSource : RecipeRepository {
                 "aeropress_tim_wendelboe" to 12,
                 "pour_over_hoffmann" to 23,
                 "cold_brew_default" to 33,
-                "pour_over_tetsu_kasya" to 23
+                "pour_over_tetsu_kasya" to 23,
+                "pour_over_kalita_george_howell" to 25,
+                "aeropress_my_reverted" to 22
             )
         )
     )
@@ -112,6 +116,36 @@ class RecipeDataSource : RecipeRepository {
             equipment = listOf(
                 Equipment("V60 Ceramic"),
                 Equipment("Hario Filter"),
+                Equipment("Kettle"),
+                Equipment("Scale"),
+                Equipment("Timer")
+            )
+        ),
+        Recipe(
+            id = "pour_over_kalita_george_howell",
+            name = "Pour Over: Kalita George Howell (orig)",
+            type = RecipeType.POUR_OVER,
+            coffeeAmounts = listOf(30), // Fixed 30g per the specification
+            defaultCoffeeAmount = 30,
+            supportedGrinders = listOf("Comandante C40", "Timemore C2"),
+            equipment = listOf(
+                Equipment("Kalita Tsubame"),
+                Equipment("Kalita Filter"),
+                Equipment("Kettle"),
+                Equipment("Scale"),
+                Equipment("Timer")
+            )
+        ),
+        Recipe(
+            id = "aeropress_my_reverted",
+            name = "Aeropress: My Reverted",
+            type = RecipeType.AEROPRESS,
+            coffeeAmounts = listOf(15), // Fixed 15g per the specification
+            defaultCoffeeAmount = 15,
+            supportedGrinders = listOf("Comandante C40", "Timemore C2"),
+            equipment = listOf(
+                Equipment("Aeropress in reverted position"),
+                Equipment("Aeropress Filter"),
                 Equipment("Kettle"),
                 Equipment("Scale"),
                 Equipment("Timer")

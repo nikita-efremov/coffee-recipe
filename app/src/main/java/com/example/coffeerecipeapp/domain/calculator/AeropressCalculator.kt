@@ -17,11 +17,42 @@ class AeropressCalculator(
 
     override fun calculateRecipe(configuration: RecipeConfiguration): RecipeResult {
         val coffeeGrams = configuration.coffeeAmount
-        val waterVolume = waterAmounts[coffeeGrams] ?: 210
         val grinder = grinders[configuration.grinder]
             ?: throw IllegalArgumentException("Unknown grinder: ${configuration.grinder}")
 
         val grindSetting = grinder.clickSettings[configuration.recipe.id] ?: 13
+
+        return when (configuration.recipe.id) {
+            "aeropress_my_reverted" -> calculateRevertedAeropressRecipe(coffeeGrams, grinder, grindSetting)
+            else -> calculateTimWendelboeRecipe(coffeeGrams, grinder, grindSetting)
+        }
+    }
+
+    private fun calculateRevertedAeropressRecipe(coffeeGrams: Int, grinder: Grinder, grindSetting: Int): RecipeResult {
+        val waterVolume = 214 // Fixed 214ml as per specification
+        val bloomWater = 45 // Fixed 45g bloom water
+
+        val equipment = listOf(
+            "- Aeropress in reverted position",
+            "- Aeropress filter",
+            "- 95°C water",
+            "- ${coffeeGrams}g coffee",
+            "- ${waterVolume}ml water",
+            "- $grindSetting clicks ${grinder.name}"
+        )
+
+        val steps = listOf(
+            RecipeStep(1, "Add ${bloomWater}g of water, steer aggressively", "0:00", waterAmount = bloomWater),
+            RecipeStep(2, "Bloom", "0:00 - 0:30"),
+            RecipeStep(3, "Add water till ${waterVolume}g, steer gently, close", "0:30", waterAmount = waterVolume - bloomWater),
+            RecipeStep(4, "Pushing", "1:30 - 2:00")
+        )
+
+        return RecipeResult(equipment, steps)
+    }
+
+    private fun calculateTimWendelboeRecipe(coffeeGrams: Int, grinder: Grinder, grindSetting: Int): RecipeResult {
+        val waterVolume = waterAmounts[coffeeGrams] ?: 210
 
         val equipment = listOf(
             "- Aeropress filter",
