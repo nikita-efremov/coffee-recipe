@@ -1,4 +1,3 @@
-// MainActivity.kt
 package com.example.coffeerecipeapp
 
 import android.os.Bundle
@@ -17,8 +16,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var coffeeAmountSpinner: Spinner
     private lateinit var grinderSpinner: Spinner
     private lateinit var pourOverSpinner: Spinner
+    private lateinit var pourOverLabel: TextView
     private lateinit var equipmentList: TextView
     private lateinit var recipeSteps: TextView
+    private lateinit var recipeTitle: TextView
 
     // Dependencies - In a real app, use Dependency Injection (Hilt/Dagger)
     private val recipeRepository = RecipeDataSource()
@@ -48,8 +49,10 @@ class MainActivity : AppCompatActivity() {
         coffeeAmountSpinner = findViewById(R.id.coffee_amount_spinner)
         grinderSpinner = findViewById(R.id.grinder_spinner)
         pourOverSpinner = findViewById(R.id.pour_over_spinner)
+        pourOverLabel = findViewById(R.id.pour_over_label)
         equipmentList = findViewById(R.id.equipment_list)
         recipeSteps = findViewById(R.id.recipe_steps)
+        recipeTitle = findViewById(R.id.recipe_title)
     }
 
     private fun setupSpinners() {
@@ -84,6 +87,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateUIForSelectedRecipe() {
         selectedRecipe?.let { recipe ->
+            // Update the title to show the selected recipe name
+            recipeTitle.text = recipe.name
+
             setupCoffeeAmountSpinner(recipe)
             setupGrinderSpinner(recipe)
             setupEquipmentSpinner(recipe)
@@ -126,6 +132,7 @@ class MainActivity : AppCompatActivity() {
                 val adapter = createSpinnerAdapter(drippers)
                 pourOverSpinner.adapter = adapter
                 pourOverSpinner.visibility = android.view.View.VISIBLE
+                pourOverLabel.visibility = android.view.View.VISIBLE
 
                 if (drippers.isNotEmpty()) {
                     selectedDripper = drippers.first()
@@ -139,6 +146,7 @@ class MainActivity : AppCompatActivity() {
             }
             else -> {
                 pourOverSpinner.visibility = android.view.View.GONE
+                pourOverLabel.visibility = android.view.View.GONE
                 selectedDripper = ""
             }
         }
