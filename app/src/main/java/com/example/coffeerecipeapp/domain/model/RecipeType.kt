@@ -4,5 +4,6 @@ enum class RecipeType {
     POUR_OVER,
     AEROPRESS,
     FRENCH_PRESS,
-    ESPRESSO
+    ESPRESSO,
+    COLD_BREW
 }

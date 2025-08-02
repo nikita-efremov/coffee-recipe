@@ -13,14 +13,20 @@ class RecipeDataSource : RecipeRepository {
             name = "Comandante C40",
             clickSettings = mapOf(
                 "pour_over_lance_hedrick" to 23,
-                "aeropress_tim_wendelboe" to 13
+                "aeropress_tim_wendelboe" to 13,
+                "pour_over_hoffmann" to 25,
+                "cold_brew_default" to 35,
+                "pour_over_tetsu_kasya" to 28
             )
         ),
         "Timemore C2" to Grinder(
             name = "Timemore C2",
             clickSettings = mapOf(
                 "pour_over_lance_hedrick" to 21,
-                "aeropress_tim_wendelboe" to 12
+                "aeropress_tim_wendelboe" to 12,
+                "pour_over_hoffmann" to 23,
+                "cold_brew_default" to 33,
+                "pour_over_tetsu_kasya" to 23
             )
         )
     )
@@ -35,6 +41,11 @@ class RecipeDataSource : RecipeRepository {
             name = "Kalita Tsubame",
             temperature = 93,
             filter = "Kalita Wave"
+        ),
+        "V60 Hario" to PourOverDripper(
+            name = "V60 Ceramic",
+            temperature = 100,
+            filter = "Hario Filter"
         )
     )
 
@@ -64,6 +75,48 @@ class RecipeDataSource : RecipeRepository {
             equipment = listOf(
                 Equipment("Aeropress"),
                 Equipment("Aeropress Filter"),
+                Equipment("Kettle"),
+                Equipment("Scale"),
+                Equipment("Timer")
+            )
+        ),
+        Recipe(
+            id = "pour_over_hoffmann",
+            name = "Pour Over: Hoffmann (orig)",
+            type = RecipeType.POUR_OVER,
+            coffeeAmounts = listOf(30), // Fixed 30g per the specification
+            defaultCoffeeAmount = 30,
+            supportedGrinders = listOf("Comandante C40", "Timemore C2"),
+            equipment = listOf(
+                Equipment("V60 Ceramic"),
+                Equipment("Hario Filter"),
+                Equipment("Kettle"),
+                Equipment("Scale"),
+                Equipment("Timer")
+            )
+        ),
+        Recipe(
+            id = "cold_brew_default",
+            name = "Cold Brew: Default",
+            type = RecipeType.COLD_BREW,
+            coffeeAmounts = listOf(47), // Fixed amount based on 800ml water
+            defaultCoffeeAmount = 47,
+            supportedGrinders = listOf("Comandante C40", "Timemore C2"),
+            equipment = listOf(
+                Equipment("Cold Brew Hario Bottle"),
+                Equipment("Scale")
+            )
+        ),
+        Recipe(
+            id = "pour_over_tetsu_kasya",
+            name = "Pour Over: Tetsu Kasya (orig)",
+            type = RecipeType.POUR_OVER,
+            coffeeAmounts = listOf(30), // Fixed 30g per the specification
+            defaultCoffeeAmount = 30,
+            supportedGrinders = listOf("Comandante C40", "Timemore C2"),
+            equipment = listOf(
+                Equipment("V60 Ceramic"),
+                Equipment("Hario Filter"),
                 Equipment("Kettle"),
                 Equipment("Scale"),
                 Equipment("Timer")

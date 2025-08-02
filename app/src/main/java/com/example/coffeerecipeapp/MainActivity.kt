@@ -6,6 +6,7 @@ import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.coffeerecipeapp.domain.calculator.AeropressCalculator
+import com.example.coffeerecipeapp.domain.calculator.ColdBrewCalculator
 import com.example.coffeerecipeapp.domain.calculator.PourOverCalculator
 import com.example.coffeerecipeapp.domain.model.*
 import com.example.coffeerecipeapp.domain.repository.RecipeDataSource
@@ -26,7 +27,8 @@ class MainActivity : AppCompatActivity() {
     private val recipeService by lazy {
         val calculators = listOf(
             PourOverCalculator(recipeRepository.getGrinders(), recipeRepository.getPourOverDrippers()),
-            AeropressCalculator(recipeRepository.getGrinders())
+            AeropressCalculator(recipeRepository.getGrinders()),
+            ColdBrewCalculator(recipeRepository.getGrinders())
         )
         RecipeService(recipeRepository, calculators)
     }

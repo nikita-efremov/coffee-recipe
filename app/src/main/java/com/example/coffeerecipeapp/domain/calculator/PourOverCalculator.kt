@@ -17,7 +17,6 @@ class PourOverCalculator(
 
     override fun calculateRecipe(configuration: RecipeConfiguration): RecipeResult {
         val coffeeGrams = configuration.coffeeAmount
-        val waterVolume = coffeeGrams * 16
         val grinder = grinders[configuration.grinder]
             ?: throw IllegalArgumentException("Unknown grinder: ${configuration.grinder}")
 
@@ -26,6 +25,72 @@ class PourOverCalculator(
             ?: throw IllegalArgumentException("Unknown dripper: $dripperName")
 
         val grindSetting = grinder.clickSettings[configuration.recipe.id] ?: 23
+
+        return when (configuration.recipe.id) {
+            "pour_over_hoffmann" -> calculateHoffmannRecipe(coffeeGrams, grinder, grindSetting)
+            "pour_over_tetsu_kasya" -> calculateTetsuKasyaRecipe(coffeeGrams, grinder, grindSetting)
+            else -> calculateLanceHedrickRecipe(coffeeGrams, dripper, dripperName, grinder, grindSetting)
+        }
+    }
+
+    private fun calculateHoffmannRecipe(coffeeGrams: Int, grinder: Grinder, grindSetting: Int): RecipeResult {
+        val waterVolume = 500 // Fixed 500ml as per specification
+
+        val equipment = listOf(
+            "• V60 Ceramic",
+            "- Hario Filter",
+            "- 100°C water",
+            "- ${coffeeGrams}g coffee",
+            "- ${waterVolume}ml water",
+            "- $grindSetting clicks ${grinder.name}"
+        )
+
+        val bloomWater = coffeeGrams * 2 // 2g water per 1g coffee
+        val secondPourTarget = (waterVolume * 0.6).toInt() // 60% of total volume
+
+        val steps = listOf(
+            RecipeStep(1, "Add ${bloomWater}ml water (2g per 1g coffee), swirl, let it bloom", "0:00", waterAmount = bloomWater),
+            RecipeStep(2, "Add water till ${secondPourTarget}ml (60% of total volume)", "0:45 - 1:15", waterAmount = secondPourTarget - bloomWater),
+            RecipeStep(3, "Add water till ${waterVolume}ml (100% of total volume). Stir 1 turn clockwise, stir 1 turn anticlockwise, make gentle swirl", "1:15 - 1:45", waterAmount = waterVolume - secondPourTarget),
+            RecipeStep(4, "Should be finished", "3:30")
+        )
+
+        return RecipeResult(equipment, steps)
+    }
+
+    private fun calculateTetsuKasyaRecipe(coffeeGrams: Int, grinder: Grinder, grindSetting: Int): RecipeResult {
+        val waterVolume = 500 // Fixed 500ml as per specification
+
+        val equipment = listOf(
+            "• V60 Ceramic",
+            "- Hario Filter",
+            "- 95°C water",
+            "- ${coffeeGrams}g coffee",
+            "- ${waterVolume}ml water",
+            "- $grindSetting clicks ${grinder.name}"
+        )
+
+        val steps = listOf(
+            RecipeStep(1, "Add 100ml of water (up to 100ml)", "0:00", waterAmount = 100),
+            RecipeStep(2, "Add 100ml of water (up to 200ml)", "0:45", waterAmount = 100),
+            RecipeStep(3, "Add 100ml of water (up to 300ml)", "1:30", waterAmount = 100),
+            RecipeStep(4, "Add 100ml of water (up to 400ml)", "2:15", waterAmount = 100),
+            RecipeStep(5, "Add 100ml of water (up to 500ml)", "3:00", waterAmount = 100)
+        )
+
+        return RecipeResult(equipment, steps)
+    }
+
+    private fun calculateLanceHedrickRecipe(
+        coffeeGrams: Int,
+        dripper: PourOverDripper,
+        dripperName: String,
+        grinder: Grinder,
+        grindSetting: Int
+    ): RecipeResult {
+        val waterVolume = coffeeGrams * 16
+        val firstPour = coffeeGrams * 3
+        val secondPourTarget = coffeeGrams * 10
 
         val equipment = listOf(
             "• $dripperName",
