@@ -35,17 +35,12 @@ class RecipeDataSource : RecipeRepository {
         "V60 Ceramic" to PourOverDripper(
             name = "V60 Ceramic",
             temperature = 100,
-            filter = "Cafec Abaca"
+            filter = "Hario Filter"  // Updated to use Hario Filter for the new recipes
         ),
         "Kalita Tsubame" to PourOverDripper(
             name = "Kalita Tsubame",
             temperature = 93,
             filter = "Kalita Wave"
-        ),
-        "V60 Hario" to PourOverDripper(
-            name = "V60 Ceramic",
-            temperature = 100,
-            filter = "Hario Filter"
         )
     )
 

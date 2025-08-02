@@ -92,9 +92,12 @@ class PourOverCalculator(
         val firstPour = coffeeGrams * 3
         val secondPourTarget = coffeeGrams * 10
 
+        // Use Cafec Abaca filter specifically for Lance Hedrick recipe
+        val filterType = "Cafec Abaca"
+
         val equipment = listOf(
             "• $dripperName",
-            "- ${dripper.filter} filter",
+            "- $filterType filter",
             "- ${dripper.temperature}°C water",
             "- ${coffeeGrams}g coffee",
             "- ${waterVolume}ml water",

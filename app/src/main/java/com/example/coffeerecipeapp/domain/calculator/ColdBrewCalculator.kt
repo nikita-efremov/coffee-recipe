@@ -32,11 +32,7 @@ class ColdBrewCalculator(
 
         val steps = listOf(
             RecipeStep(1, "Put grinded coffee in the Bottle"),
-            RecipeStep(
-                2,
-                "Add whole amount of water (${waterVolume}ml)",
-                waterAmount = waterVolume
-            ),
+            RecipeStep(2, "Add whole amount of water (${waterVolume}ml)", waterAmount = waterVolume),
             RecipeStep(3, "Shake thoroughly"),
             RecipeStep(4, "After 6 - 18 hours shake once again", "6h - 18h"),
             RecipeStep(5, "After 24 hours remove coffee grounds", "24h"),
