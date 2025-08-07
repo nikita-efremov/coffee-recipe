@@ -5,9 +5,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.coffeerecipeapp.domain.calculator.AeropressCalculator
-import com.example.coffeerecipeapp.domain.calculator.ColdBrewCalculator
-import com.example.coffeerecipeapp.domain.calculator.PourOverCalculator
+import com.example.coffeerecipeapp.domain.calculator.*
 import com.example.coffeerecipeapp.domain.model.*
 import com.example.coffeerecipeapp.domain.repository.RecipeDataSource
 import com.example.coffeerecipeapp.domain.repository.RecipeService
@@ -17,7 +15,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var coffeeAmountSpinner: Spinner
     private lateinit var grinderSpinner: Spinner
     private lateinit var pourOverSpinner: Spinner
+    private lateinit var espressoBrewerSpinner: Spinner
     private lateinit var pourOverLabel: TextView
+    private lateinit var espressoBrewerLabel: TextView
     private lateinit var equipmentList: TextView
     private lateinit var recipeSteps: TextView
     private lateinit var recipeTitle: TextView
@@ -28,7 +28,9 @@ class MainActivity : AppCompatActivity() {
         val calculators = listOf(
             PourOverCalculator(recipeRepository.getGrinders(), recipeRepository.getPourOverDrippers()),
             AeropressCalculator(recipeRepository.getGrinders()),
-            ColdBrewCalculator(recipeRepository.getGrinders())
+            ColdBrewCalculator(recipeRepository.getGrinders()),
+            EspressoCalculator(recipeRepository.getGrinders(), recipeRepository.getEspressoBrewers()),
+            FrenchPressCalculator(recipeRepository.getGrinders())
         )
         RecipeService(recipeRepository, calculators)
     }
@@ -36,6 +38,7 @@ class MainActivity : AppCompatActivity() {
     private var selectedRecipe: Recipe? = null
     private var selectedGrinder: String = ""
     private var selectedDripper: String = ""
+    private var selectedEspressoBrewer: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,7 +54,9 @@ class MainActivity : AppCompatActivity() {
         coffeeAmountSpinner = findViewById(R.id.coffee_amount_spinner)
         grinderSpinner = findViewById(R.id.grinder_spinner)
         pourOverSpinner = findViewById(R.id.pour_over_spinner)
+        espressoBrewerSpinner = findViewById(R.id.espresso_brewer_spinner)
         pourOverLabel = findViewById(R.id.pour_over_label)
+        espressoBrewerLabel = findViewById(R.id.espresso_brewer_label)
         equipmentList = findViewById(R.id.equipment_list)
         recipeSteps = findViewById(R.id.recipe_steps)
         recipeTitle = findViewById(R.id.recipe_title)
@@ -135,6 +140,8 @@ class MainActivity : AppCompatActivity() {
                 pourOverSpinner.adapter = adapter
                 pourOverSpinner.visibility = android.view.View.VISIBLE
                 pourOverLabel.visibility = android.view.View.VISIBLE
+                espressoBrewerSpinner.visibility = android.view.View.GONE
+                espressoBrewerLabel.visibility = android.view.View.GONE
 
                 if (drippers.isNotEmpty()) {
                     selectedDripper = drippers.first()
@@ -146,10 +153,33 @@ class MainActivity : AppCompatActivity() {
                     updateRecipeDisplay()
                 }
             }
+            RecipeType.ESPRESSO -> {
+                // Get espresso brewers from repository directly
+                val espressoBrewers = recipeRepository.getEspressoBrewers().keys.toList()
+                val adapter = createSpinnerAdapter(espressoBrewers)
+                espressoBrewerSpinner.adapter = adapter
+                espressoBrewerSpinner.visibility = android.view.View.VISIBLE
+                espressoBrewerLabel.visibility = android.view.View.VISIBLE
+                pourOverSpinner.visibility = android.view.View.GONE
+                pourOverLabel.visibility = android.view.View.GONE
+
+                if (espressoBrewers.isNotEmpty()) {
+                    selectedEspressoBrewer = espressoBrewers.first()
+                    espressoBrewerSpinner.setSelection(0)
+                }
+
+                espressoBrewerSpinner.onItemSelectedListener = createSimpleSelectionListener {
+                    selectedEspressoBrewer = espressoBrewers[espressoBrewerSpinner.selectedItemPosition]
+                    updateRecipeDisplay()
+                }
+            }
             else -> {
                 pourOverSpinner.visibility = android.view.View.GONE
                 pourOverLabel.visibility = android.view.View.GONE
+                espressoBrewerSpinner.visibility = android.view.View.GONE
+                espressoBrewerLabel.visibility = android.view.View.GONE
                 selectedDripper = ""
+                selectedEspressoBrewer = ""
             }
         }
     }
@@ -158,10 +188,13 @@ class MainActivity : AppCompatActivity() {
         selectedRecipe?.let { recipe ->
             try {
                 val coffeeAmount = recipe.coffeeAmounts[coffeeAmountSpinner.selectedItemPosition]
-                val equipmentMap = if (selectedDripper.isNotEmpty()) {
-                    mapOf("dripper" to selectedDripper)
-                } else {
-                    emptyMap()
+                val equipmentMap = mutableMapOf<String, String>()
+
+                if (selectedDripper.isNotEmpty()) {
+                    equipmentMap["dripper"] = selectedDripper
+                }
+                if (selectedEspressoBrewer.isNotEmpty()) {
+                    equipmentMap["espresso_brewer"] = selectedEspressoBrewer
                 }
 
                 val configuration = RecipeConfiguration(

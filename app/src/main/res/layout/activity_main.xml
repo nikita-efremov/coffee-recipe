@@ -101,6 +101,7 @@
             app:layout_constraintStart_toEndOf="@id/grinder_label"
             app:layout_constraintBottom_toBottomOf="@id/grinder_label" />
 
+        <!-- Pour Over Equipment Section -->
         <TextView
             android:id="@+id/pour_over_label"
             android:layout_width="wrap_content"
@@ -111,6 +112,7 @@
             android:textColor="@color/section_header_color"
             android:paddingTop="16dp"
             android:paddingBottom="8dp"
+            android:visibility="gone"
             app:layout_constraintTop_toBottomOf="@id/grinder_spinner"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -122,9 +124,38 @@
             android:background="@android:drawable/btn_dropdown"
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
+            android:visibility="gone"
             app:layout_constraintTop_toBottomOf="@id/grinder_spinner"
             app:layout_constraintStart_toEndOf="@id/pour_over_label"
             app:layout_constraintBottom_toBottomOf="@id/pour_over_label" />
+
+        <!-- Espresso Brewer Equipment Section -->
+        <TextView
+            android:id="@+id/espresso_brewer_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/espresso_brewer_label"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/section_header_color"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/grinder_spinner"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Spinner
+            android:id="@+id/espresso_brewer_spinner"
+            android:layout_width="180dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/grinder_spinner"
+            app:layout_constraintStart_toEndOf="@id/espresso_brewer_label"
+            app:layout_constraintBottom_toBottomOf="@id/espresso_brewer_label" />
 
         <TextView
             android:id="@+id/equipment_title"
