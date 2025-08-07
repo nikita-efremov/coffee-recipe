@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
             PourOverCalculator(recipeRepository.getGrinders(), recipeRepository.getPourOverDrippers()),
             AeropressCalculator(recipeRepository.getGrinders()),
             ColdBrewCalculator(recipeRepository.getGrinders()),
-            EspressoCalculator(recipeRepository.getGrinders(), recipeRepository.getEspressoBrewers()),
+            EspressoCalculator(recipeRepository.getGrinders()),
             FrenchPressCalculator(recipeRepository.getGrinders())
         )
         RecipeService(recipeRepository, calculators)
@@ -94,9 +94,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateUIForSelectedRecipe() {
         selectedRecipe?.let { recipe ->
-            // Update the title to show the selected recipe name
             recipeTitle.text = recipe.name
-
             setupCoffeeAmountSpinner(recipe)
             setupGrinderSpinner(recipe)
             setupEquipmentSpinner(recipe)
@@ -154,8 +152,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             RecipeType.ESPRESSO -> {
-                // Get espresso brewers from repository directly
-                val espressoBrewers = recipeRepository.getEspressoBrewers().keys.toList()
+                val espressoBrewers = recipeService.getAvailableEspressoBrewers()
                 val adapter = createSpinnerAdapter(espressoBrewers)
                 espressoBrewerSpinner.adapter = adapter
                 espressoBrewerSpinner.visibility = android.view.View.VISIBLE
