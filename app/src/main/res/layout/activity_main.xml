@@ -157,6 +157,13 @@
             app:layout_constraintStart_toEndOf="@id/espresso_brewer_label"
             app:layout_constraintBottom_toBottomOf="@id/espresso_brewer_label" />
 
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/equipment_barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="pour_over_spinner,espresso_brewer_spinner" />
+
         <TextView
             android:id="@+id/equipment_title"
             android:layout_width="0dp"
@@ -167,7 +174,7 @@
             android:textColor="@color/section_header_color"
             android:paddingTop="16dp"
             android:paddingBottom="4dp"
-            app:layout_constraintTop_toBottomOf="@id/pour_over_spinner"
+            app:layout_constraintTop_toBottomOf="@id/equipment_barrier"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 

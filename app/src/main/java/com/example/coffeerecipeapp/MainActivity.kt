@@ -131,6 +131,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupEquipmentSpinner(recipe: Recipe) {
+        pourOverSpinner.visibility = android.view.View.GONE
+        pourOverLabel.visibility = android.view.View.GONE
+        espressoBrewerSpinner.visibility = android.view.View.GONE
+        espressoBrewerLabel.visibility = android.view.View.GONE
+        selectedDripper = ""
+        selectedEspressoBrewer = ""
+
         when (recipe.type) {
             RecipeType.POUR_OVER -> {
                 val drippers = recipeService.getAvailableDrippers()
@@ -138,8 +145,6 @@ class MainActivity : AppCompatActivity() {
                 pourOverSpinner.adapter = adapter
                 pourOverSpinner.visibility = android.view.View.VISIBLE
                 pourOverLabel.visibility = android.view.View.VISIBLE
-                espressoBrewerSpinner.visibility = android.view.View.GONE
-                espressoBrewerLabel.visibility = android.view.View.GONE
 
                 if (drippers.isNotEmpty()) {
                     selectedDripper = drippers.first()
@@ -157,8 +162,6 @@ class MainActivity : AppCompatActivity() {
                 espressoBrewerSpinner.adapter = adapter
                 espressoBrewerSpinner.visibility = android.view.View.VISIBLE
                 espressoBrewerLabel.visibility = android.view.View.VISIBLE
-                pourOverSpinner.visibility = android.view.View.GONE
-                pourOverLabel.visibility = android.view.View.GONE
 
                 if (espressoBrewers.isNotEmpty()) {
                     selectedEspressoBrewer = espressoBrewers.first()
@@ -171,12 +174,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             else -> {
-                pourOverSpinner.visibility = android.view.View.GONE
-                pourOverLabel.visibility = android.view.View.GONE
-                espressoBrewerSpinner.visibility = android.view.View.GONE
-                espressoBrewerLabel.visibility = android.view.View.GONE
-                selectedDripper = ""
-                selectedEspressoBrewer = ""
+                // Do nothing
             }
         }
     }
