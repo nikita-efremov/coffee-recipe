@@ -104,7 +104,8 @@ class RecipeDataSource : RecipeRepository {
             supportedGrinders = listOf("Comandante C40", "Timemore C2"),
             equipment = listOf(
                 Equipment("Pour Over Dripper", alternatives = listOf("V60 Ceramic", "Kalita Tsubame")),
-                Equipment("Filter"),
+                Equipment("Cafec Abaca", displayedAs = "Filter"),
+                Equipment("Kalita Wave", displayedAs = "Filter"),
                 Equipment("Kettle"),
                 Equipment("Scale"),
                 Equipment("Timer")
@@ -176,7 +177,7 @@ class RecipeDataSource : RecipeRepository {
             supportedGrinders = listOf("Comandante C40", "Timemore C2"),
             equipment = listOf(
                 Equipment("Kalita Tsubame"),
-                Equipment("Kalita Filter"),
+                Equipment("Kalita Wave"),
                 Equipment("Kettle"),
                 Equipment("Scale"),
                 Equipment("Timer")

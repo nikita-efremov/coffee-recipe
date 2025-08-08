@@ -87,7 +87,7 @@ class PourOverCalculator(
 
         val equipment = listOf(
             "• Kalita Tsubame",
-            "- Kalita Filter",
+            "- Kalita Wave",
             "- 95°C water",
             "- ${coffeeGrams}g coffee",
             "- ${waterVolume}ml water",
@@ -115,8 +115,7 @@ class PourOverCalculator(
     ): RecipeResult {
         val waterVolume = coffeeGrams * 16
 
-        // Use Cafec Abaca filter specifically for Lance Hedrick recipe
-        val filterType = "Cafec Abaca"
+        val filterType = dripper.filter
 
         val equipment = listOf(
             "• $dripperName",
