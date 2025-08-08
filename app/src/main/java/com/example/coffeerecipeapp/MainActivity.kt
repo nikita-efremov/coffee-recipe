@@ -204,7 +204,7 @@ class MainActivity : AppCompatActivity() {
                 val result = recipeService.calculateRecipe(configuration)
                 displayRecipeResult(result)
             } catch (e: Exception) {
-                displayError("Error calculating recipe: ${e.message}")
+                displayError(getString(R.string.error_calculating_recipe, e.message))
             }
         }
     }
@@ -220,7 +220,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun displayError(message: String) {
-        equipmentList.text = "Error loading equipment"
+        equipmentList.text = getString(R.string.equipment_load_error)
         recipeSteps.text = message
     }
 

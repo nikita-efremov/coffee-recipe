@@ -14,4 +14,6 @@
     <string name="equipment_list">Equipment will be listed here</string>
     <string name="steps_title">Recipe Steps</string>
     <string name="recipe_steps">Recipe steps will be displayed here</string>
+    <string name="equipment_load_error">Error loading equipment</string>
+    <string name="error_calculating_recipe">Error calculating recipe: %1$s</string>
 </resources>
