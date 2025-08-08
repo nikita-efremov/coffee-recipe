@@ -58,17 +58,7 @@ class RecipeDataSource : RecipeRepository {
                 "espresso_modern" to 20,
                 "espresso_turbo_shot" to 24,
                 // Approximate settings for other recipes
-                "pour_over_lance_hedrick" to 45,
-                "aeropress_tim_wendelboe" to 25,
-                "pour_over_hoffmann" to 50,
-                "cold_brew_default" to 70,
-                "pour_over_tetsu_kasya" to 55,
-                "pour_over_kalita_george_howell" to 55,
-                "aeropress_my_reverted" to 35,
-                "espresso_budget" to 22,
-                "french_press_hoffmann" to 50,
-                "pour_over_matt_winton" to 52,
-                "pour_over_hoffmann_v2" to 48
+                "espresso_budget" to 22
             )
         )
     )
@@ -126,7 +116,7 @@ class RecipeDataSource : RecipeRepository {
             type = RecipeType.AEROPRESS,
             coffeeAmounts = listOf(15, 18),
             defaultCoffeeAmount = 15,
-            supportedGrinders = listOf("Comandante C40", "Timemore C2", "Niche Zero"),
+            supportedGrinders = listOf("Comandante C40", "Timemore C2"),
             equipment = listOf(
                 Equipment("Aeropress"),
                 Equipment("Aeropress Filter"),
@@ -141,7 +131,7 @@ class RecipeDataSource : RecipeRepository {
             type = RecipeType.POUR_OVER,
             coffeeAmounts = listOf(30),
             defaultCoffeeAmount = 30,
-            supportedGrinders = listOf("Comandante C40", "Timemore C2", "Niche Zero"),
+            supportedGrinders = listOf("Comandante C40", "Timemore C2"),
             equipment = listOf(
                 Equipment("V60 Ceramic"),
                 Equipment("Hario Filter"),
@@ -156,7 +146,7 @@ class RecipeDataSource : RecipeRepository {
             type = RecipeType.COLD_BREW,
             coffeeAmounts = listOf(47),
             defaultCoffeeAmount = 47,
-            supportedGrinders = listOf("Comandante C40", "Timemore C2", "Niche Zero"),
+            supportedGrinders = listOf("Comandante C40", "Timemore C2"),
             equipment = listOf(
                 Equipment("Cold Brew Hario Bottle"),
                 Equipment("Scale")
@@ -168,7 +158,7 @@ class RecipeDataSource : RecipeRepository {
             type = RecipeType.POUR_OVER,
             coffeeAmounts = listOf(30),
             defaultCoffeeAmount = 30,
-            supportedGrinders = listOf("Comandante C40", "Timemore C2", "Niche Zero"),
+            supportedGrinders = listOf("Comandante C40", "Timemore C2"),
             equipment = listOf(
                 Equipment("V60 Ceramic"),
                 Equipment("Hario Filter"),
@@ -183,7 +173,7 @@ class RecipeDataSource : RecipeRepository {
             type = RecipeType.POUR_OVER,
             coffeeAmounts = listOf(30),
             defaultCoffeeAmount = 30,
-            supportedGrinders = listOf("Comandante C40", "Timemore C2", "Niche Zero"),
+            supportedGrinders = listOf("Comandante C40", "Timemore C2"),
             equipment = listOf(
                 Equipment("Kalita Tsubame"),
                 Equipment("Kalita Filter"),
@@ -198,7 +188,7 @@ class RecipeDataSource : RecipeRepository {
             type = RecipeType.AEROPRESS,
             coffeeAmounts = listOf(15),
             defaultCoffeeAmount = 15,
-            supportedGrinders = listOf("Comandante C40", "Timemore C2", "Niche Zero"),
+            supportedGrinders = listOf("Comandante C40", "Timemore C2"),
             equipment = listOf(
                 Equipment("Aeropress in reverted position"),
                 Equipment("Aeropress Filter"),
@@ -228,7 +218,7 @@ class RecipeDataSource : RecipeRepository {
             type = RecipeType.FRENCH_PRESS,
             coffeeAmounts = listOf(30),
             defaultCoffeeAmount = 30,
-            supportedGrinders = listOf("Comandante C40", "Timemore C2", "Niche Zero"),
+            supportedGrinders = listOf("Comandante C40", "Timemore C2"),
             equipment = listOf(
                 Equipment("French Press"),
                 Equipment("Kettle"),
@@ -284,7 +274,7 @@ class RecipeDataSource : RecipeRepository {
             type = RecipeType.POUR_OVER,
             coffeeAmounts = listOf(20),
             defaultCoffeeAmount = 20,
-            supportedGrinders = listOf("Comandante C40", "Timemore C2", "Niche Zero"),
+            supportedGrinders = listOf("Comandante C40", "Timemore C2"),
             equipment = listOf(
                 Equipment("V60 Ceramic"),
                 Equipment("Hario Filter"),
@@ -299,7 +289,7 @@ class RecipeDataSource : RecipeRepository {
             type = RecipeType.POUR_OVER,
             coffeeAmounts = listOf(18),
             defaultCoffeeAmount = 18,
-            supportedGrinders = listOf("Comandante C40", "Timemore C2", "Niche Zero"),
+            supportedGrinders = listOf("Comandante C40", "Timemore C2"),
             equipment = listOf(
                 Equipment("V60 Ceramic"),
                 Equipment("Hario Filter"),

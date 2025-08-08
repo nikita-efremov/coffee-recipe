@@ -114,8 +114,6 @@ class PourOverCalculator(
         grindSetting: Int
     ): RecipeResult {
         val waterVolume = coffeeGrams * 16
-        val firstPour = coffeeGrams * 3
-        val secondPourTarget = coffeeGrams * 10
 
         // Use Cafec Abaca filter specifically for Lance Hedrick recipe
         val filterType = "Cafec Abaca"
