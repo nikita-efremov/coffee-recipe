@@ -111,7 +111,7 @@ class RecipeDataSource : RecipeRepository {
             type = RecipeType.POUR_OVER,
             coffeeAmounts = (12..45).toList(),
             defaultCoffeeAmount = 30,
-            supportedGrinders = listOf("Comandante C40", "Timemore C2", "Niche Zero"),
+            supportedGrinders = listOf("Comandante C40", "Timemore C2"),
             equipment = listOf(
                 Equipment("Pour Over Dripper", alternatives = listOf("V60 Ceramic", "Kalita Tsubame")),
                 Equipment("Filter"),
