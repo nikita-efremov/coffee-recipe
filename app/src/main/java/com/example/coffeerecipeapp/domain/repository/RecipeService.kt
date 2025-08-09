@@ -25,6 +25,9 @@ class RecipeService(
     fun getAvailableDrippers(): List<String> =
         repository.getPourOverDrippers().keys.toList()
 
+    fun getDrippersForRecipe(recipeId: String): List<String> =
+        repository.getDrippersForRecipe(recipeId)
+
     fun getAvailableEspressoBrewers(): List<String> =
         repository.getEspressoBrewers().keys.toList()
 }

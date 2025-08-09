@@ -69,6 +69,11 @@ class RecipeDataSource : RecipeRepository {
             temperature = 100,
             filter = "Hario Filter"
         ),
+        "V60 Ceramic (Lance Hedrick)" to PourOverDripper(
+            name = "V60 Ceramic",
+            temperature = 100,
+            filter = "Cafec Abaca"
+        ),
         "Kalita Tsubame" to PourOverDripper(
             name = "Kalita Tsubame",
             temperature = 93,
@@ -103,9 +108,7 @@ class RecipeDataSource : RecipeRepository {
             defaultCoffeeAmount = 30,
             supportedGrinders = listOf("Comandante C40", "Timemore C2"),
             equipment = listOf(
-                Equipment("Pour Over Dripper", alternatives = listOf("V60 Ceramic", "Kalita Tsubame")),
-                Equipment("Cafec Abaca", displayedAs = "Filter"),
-                Equipment("Kalita Wave", displayedAs = "Filter"),
+                Equipment("Pour Over Dripper", alternatives = listOf("V60 Ceramic (Lance Hedrick)", "Kalita Tsubame")),
                 Equipment("Kettle"),
                 Equipment("Scale"),
                 Equipment("Timer")
@@ -305,5 +308,15 @@ class RecipeDataSource : RecipeRepository {
     override fun getRecipeById(id: String): Recipe? = recipes.find { it.id == id }
     override fun getGrinders(): Map<String, Grinder> = grinders
     override fun getPourOverDrippers(): Map<String, PourOverDripper> = pourOverDrippers
+
+    override fun getDrippersForRecipe(recipeId: String): List<String> {
+        return when (recipeId) {
+            "pour_over_hoffmann", "pour_over_tetsu_kasya", "pour_over_matt_winton", "pour_over_hoffmann_v2" -> listOf("V60 Ceramic")
+            "pour_over_lance_hedrick" -> listOf("V60 Ceramic (Lance Hedrick)", "Kalita Tsubame")
+            "pour_over_kalita_george_howell" -> listOf("Kalita Tsubame")
+            else -> pourOverDrippers.keys.toList()
+        }
+    }
+
     override fun getEspressoBrewers(): Map<String, EspressoBrewer> = espressoBrewers
 }

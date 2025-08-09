@@ -7,5 +7,6 @@ interface RecipeRepository {
     fun getRecipeById(id: String): Recipe?
     fun getGrinders(): Map<String, Grinder>
     fun getPourOverDrippers(): Map<String, PourOverDripper>
+    fun getDrippersForRecipe(recipeId: String): List<String>
     fun getEspressoBrewers(): Map<String, EspressoBrewer>
 }
