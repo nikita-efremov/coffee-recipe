@@ -115,7 +115,11 @@ class PourOverCalculator(
     ): RecipeResult {
         val waterVolume = coffeeGrams * 16
 
-        val filterType = dripper.filter
+        val filterType = if (dripperName == "V60 Ceramic") {
+            "Cafec Abaca"
+        } else {
+            dripper.filter
+        }
 
         val equipment = listOf(
             "• $dripperName",
