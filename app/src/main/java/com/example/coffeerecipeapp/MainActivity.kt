@@ -140,7 +140,12 @@ class MainActivity : AppCompatActivity() {
 
         when (recipe.type) {
             RecipeType.POUR_OVER -> {
-                val drippers = recipeService.getAvailableDrippers()
+                val drippers = when (recipe.id) {
+                    "pour_over_hoffmann", "pour_over_tetsu_kasya", "pour_over_matt_winton", "pour_over_hoffmann_v2" -> listOf("V60 Ceramic")
+                    "pour_over_lance_hedrick" -> listOf("V60 Ceramic", "Kalita Tsubame")
+                    "pour_over_kalita_george_howell" -> listOf("Kalita Tsubame")
+                    else -> recipeService.getAvailableDrippers()
+                }
                 val adapter = createSpinnerAdapter(drippers)
                 pourOverSpinner.adapter = adapter
                 pourOverSpinner.visibility = android.view.View.VISIBLE
