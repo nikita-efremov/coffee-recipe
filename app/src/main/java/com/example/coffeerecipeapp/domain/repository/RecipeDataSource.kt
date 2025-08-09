@@ -97,7 +97,7 @@ class RecipeDataSource : RecipeRepository {
         // Existing recipes...
         Recipe(
             id = "pour_over_lance_hedrick",
-            name = "Pour Over: Lance Hedrick (mod)",
+            name = "Pour Over: Lance Hedrick",
             type = RecipeType.POUR_OVER,
             coffeeAmounts = (12..45).toList(),
             defaultCoffeeAmount = 30,
@@ -111,7 +111,7 @@ class RecipeDataSource : RecipeRepository {
         ),
         Recipe(
             id = "aeropress_tim_wendelboe",
-            name = "Aeropress: Tim Wendelboe (orig)",
+            name = "Aeropress: Tim Wendelboe",
             type = RecipeType.AEROPRESS,
             coffeeAmounts = listOf(15, 18),
             defaultCoffeeAmount = 15,
@@ -126,7 +126,7 @@ class RecipeDataSource : RecipeRepository {
         ),
         Recipe(
             id = "pour_over_hoffmann",
-            name = "Pour Over: Hoffmann (orig)",
+            name = "Pour Over: Hoffmann",
             type = RecipeType.POUR_OVER,
             coffeeAmounts = listOf(30),
             defaultCoffeeAmount = 30,
@@ -153,7 +153,7 @@ class RecipeDataSource : RecipeRepository {
         ),
         Recipe(
             id = "pour_over_tetsu_kasya",
-            name = "Pour Over: Tetsu Kasya (orig)",
+            name = "Pour Over: Tetsu Kasya",
             type = RecipeType.POUR_OVER,
             coffeeAmounts = listOf(30),
             defaultCoffeeAmount = 30,
@@ -168,7 +168,7 @@ class RecipeDataSource : RecipeRepository {
         ),
         Recipe(
             id = "pour_over_kalita_george_howell",
-            name = "Pour Over: Kalita George Howell (orig)",
+            name = "Pour Over: Kalita George Howell",
             type = RecipeType.POUR_OVER,
             coffeeAmounts = listOf(30),
             defaultCoffeeAmount = 30,
