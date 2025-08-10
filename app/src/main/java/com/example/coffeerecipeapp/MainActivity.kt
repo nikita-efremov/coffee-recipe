@@ -20,7 +20,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var espressoBrewerLabel: TextView
     private lateinit var equipmentList: TextView
     private lateinit var recipeSteps: TextView
-    private lateinit var recipeTitle: TextView
 
     // Dependencies - In a real app, use Dependency Injection (Hilt/Dagger)
     private val recipeRepository = RecipeDataSource()
@@ -59,7 +58,6 @@ class MainActivity : AppCompatActivity() {
         espressoBrewerLabel = findViewById(R.id.espresso_brewer_label)
         equipmentList = findViewById(R.id.equipment_list)
         recipeSteps = findViewById(R.id.recipe_steps)
-        recipeTitle = findViewById(R.id.recipe_title)
     }
 
     private fun setupSpinners() {
@@ -94,7 +92,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateUIForSelectedRecipe() {
         selectedRecipe?.let { recipe ->
-            recipeTitle.text = recipe.name
             setupCoffeeAmountSpinner(recipe)
             setupGrinderSpinner(recipe)
             setupEquipmentSpinner(recipe)
