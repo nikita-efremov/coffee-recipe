@@ -38,7 +38,7 @@ class PourOverCalculator(
         val waterVolume = 500 // Fixed 500ml as per specification
 
         val equipment = listOf(
-            "• V60 Ceramic",
+            "- V60 Ceramic",
             "- Hario Filter",
             "- 100°C water",
             "- ${coffeeGrams}g coffee",
@@ -63,7 +63,7 @@ class PourOverCalculator(
         val waterVolume = 500 // Fixed 500ml as per specification
 
         val equipment = listOf(
-            "• V60 Ceramic",
+            "- V60 Ceramic",
             "- Hario Filter",
             "- 95°C water",
             "- ${coffeeGrams}g coffee",
@@ -86,7 +86,7 @@ class PourOverCalculator(
         val waterVolume = 510 // Fixed 510ml as per specification
 
         val equipment = listOf(
-            "• Kalita Tsubame",
+            "- Kalita Tsubame",
             "- Kalita Wave",
             "- 95°C water",
             "- ${coffeeGrams}g coffee",
@@ -122,7 +122,7 @@ class PourOverCalculator(
         }
 
         val equipment = listOf(
-            "• $dripperName",
+            "- $dripperName",
             "- $filterType filter",
             "- ${dripper.temperature}°C water",
             "- ${coffeeGrams}g coffee",
