@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setInitialValues() {
-        val recipes = recipeService.getAllRecipes()
+        val recipes = recipeService.getAllRecipes().sortedBy { it.name }
         if (recipes.isNotEmpty()) {
             selectedRecipe = recipes.first()
             updateUIForSelectedRecipe()
@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupRecipeSpinner() {
-        val recipes = recipeService.getAllRecipes()
+        val recipes = recipeService.getAllRecipes().sortedBy { it.name }
         val recipeNames = recipes.map { it.name }
 
         val adapter = createSpinnerAdapter(recipeNames)
