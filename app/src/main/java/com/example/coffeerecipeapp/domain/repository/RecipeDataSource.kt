@@ -204,7 +204,7 @@ class RecipeDataSource : RecipeRepository {
             type = RecipeType.ESPRESSO,
             coffeeAmounts = listOf(17),
             defaultCoffeeAmount = 17,
-            supportedGrinders = listOf("Comandante C40", "Timemore C2", "Niche Zero"),
+            supportedGrinders = listOf("Comandante C40"),
             equipment = listOf(
                 Equipment("Delonghi EC 685"),
                 Equipment("Scale"),
@@ -231,7 +231,7 @@ class RecipeDataSource : RecipeRepository {
             type = RecipeType.ESPRESSO,
             coffeeAmounts = listOf(18),
             defaultCoffeeAmount = 18,
-            supportedGrinders = listOf("Comandante C40", "Timemore C2", "Niche Zero"),
+            supportedGrinders = listOf("Niche Zero"),
             equipment = listOf(
                 Equipment("Flair 58"),
                 Equipment("IMS basket"),
@@ -245,7 +245,7 @@ class RecipeDataSource : RecipeRepository {
             type = RecipeType.ESPRESSO,
             coffeeAmounts = listOf(18),
             defaultCoffeeAmount = 18,
-            supportedGrinders = listOf("Comandante C40", "Timemore C2", "Niche Zero"),
+            supportedGrinders = listOf("Niche Zero"),
             equipment = listOf(
                 Equipment("Flair 58"),
                 Equipment("IMS basket"),
@@ -259,7 +259,7 @@ class RecipeDataSource : RecipeRepository {
             type = RecipeType.ESPRESSO,
             coffeeAmounts = listOf(18),
             defaultCoffeeAmount = 18,
-            supportedGrinders = listOf("Comandante C40", "Timemore C2", "Niche Zero"),
+            supportedGrinders = listOf("Niche Zero"),
             equipment = listOf(
                 Equipment("Flair 58"),
                 Equipment("IMS basket"),

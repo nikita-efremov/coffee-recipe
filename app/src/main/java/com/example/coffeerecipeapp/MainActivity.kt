@@ -159,7 +159,11 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             RecipeType.ESPRESSO -> {
-                val espressoBrewers = recipeService.getAvailableEspressoBrewers()
+                val espressoBrewers = if (recipe.id == "espresso_budget") {
+                    listOf("Delonghi EC 685")
+                } else {
+                    listOf("Flair 58")
+                }
                 val adapter = createSpinnerAdapter(espressoBrewers)
                 espressoBrewerSpinner.adapter = adapter
                 espressoBrewerSpinner.visibility = android.view.View.VISIBLE
