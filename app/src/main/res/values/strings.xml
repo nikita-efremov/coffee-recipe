@@ -8,7 +8,7 @@
     <string name="recipe_selection_label">Recipe:</string>
     <string name="coffee_amount_label">Coffee:</string>
     <string name="grinder_label">Grinder:</string>
-    <string name="pour_over_label">Pour Over Dripper:</string>
+    <string name="pour_over_label">Dripper:</string>
     <string name="espresso_brewer_label">Espresso Brewer:</string>
     <string name="equipment_title">Equipment Needed</string>
     <string name="equipment_list">Equipment will be listed here</string>
